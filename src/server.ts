@@ -1,11 +1,13 @@
-import express from 'express'
+import express from "express";
 
-const app = express()
+import { categoriesRoutes } from "./routes/categories.routes";
 
-app.get('/', (request, response) => {
-    return response.json({ hello : 'world'})
-})
+const app = express();
 
-const port = process.env.PORT || 3000
+app.use(express.json());
 
-app.listen(port, () => console.log(`running on port : ${port}`))
+app.use("/categories", categoriesRoutes);
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => console.log(`running on port : ${port}`));
